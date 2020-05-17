@@ -1,0 +1,22 @@
+@import '../../../../../styles/variable';
+
+.chat-message {
+  padding: 1.25em;
+  .message {
+    font-size: 1.2em;
+  }
+  .image-wrapper {
+    margin-right: 1em;
+    height: 75px;
+    width: 75px;
+  }
+  .name {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  .timestamp {
+    margin-bottom: 1.5em;
+    color: darken($light-grey, 20%)
+  }
+
+}

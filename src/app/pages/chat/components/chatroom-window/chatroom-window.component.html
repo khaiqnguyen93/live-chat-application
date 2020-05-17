@@ -1,0 +1,9 @@
+<div class="h-100 d-flex flex-column chat-window">
+  <app-chatroom-title-bar [title]="'BB'"></app-chatroom-title-bar>
+  <div class="message-wrapper h-100">
+      <ng-container *ngFor="let msg of dummyData">
+        <app-chat-message [msg]="msg"></app-chat-message>
+      </ng-container>
+  </div>
+  <app-chat-input></app-chat-input>
+</div>

@@ -1,11 +1,11 @@
 export class User {
   firstName: string;
   lastName: string;
-  photoURL: string;
+  photoUrl: string;
 
-  constructor({firstName, lastName, photoURL}){
+  constructor({firstName, lastName, photoUrl}){
     this.firstName = firstName;
     this.lastName = lastName;
-    this.photoURL = photoURL;
+    this.photoUrl = photoUrl;
   }
 }

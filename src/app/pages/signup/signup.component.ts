@@ -40,11 +40,14 @@ export class SignupComponent implements OnInit, OnDestroy {
       return;
     }
     const{email, password, firstName, lastName} = this.signupForm.value;
-    console.log(`Email:${email}, Password: ${password}`, `First Name: ${firstName}`, `Last Name: ${lastName}`);
+
     this.subscriptions.push(
       this.authSer.signUp(firstName, lastName, email, password).subscribe(success => {
         if(success) {
           this.router.navigate(['/chat']);
+        } else {
+          const failureMsg = new Alert('There was a problem signing up. Please try again!', AlertType.Danger);
+          this.alertService.alerts.next(failureMsg);
         }
       })
     );

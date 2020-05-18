@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy  {
 
   public submit(): void {
     if(!this.loginForm.valid) {
-      const failureMsg = new Alert('Your login information is invalid. Please try again!', AlertType.Danger);
-      this.alertService.alerts.next(failureMsg);
+      this.displayFailedLogin();
       return;
     }
 
@@ -49,6 +48,8 @@ export class LoginComponent implements OnInit, OnDestroy  {
       this.authService.login(email, password).subscribe(success => {
         if(success) {
           this.router.navigateByUrl(this.returnUrl);
+        } else {
+          this.displayFailedLogin();
         }
       })
     );
@@ -61,4 +62,8 @@ export class LoginComponent implements OnInit, OnDestroy  {
     });
   }
 
+  private displayFailedLogin(): void {
+    const failureMsg = new Alert('Your login information is invalid. Please try again!', AlertType.Danger);
+  this.alertService.alerts.next(failureMsg);
+  }
 }

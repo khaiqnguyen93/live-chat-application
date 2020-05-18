@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Alert } from './classes/alert';
+import { AlertService } from './services/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'live-chat-application';
 
-  constructor() {}
+  public alerts: Array<Alert> = [];
+  constructor(private alertService: AlertService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.alertService.alerts.subscribe(alert => {
+      this.alerts.push(alert);
+    });
+  }
 }

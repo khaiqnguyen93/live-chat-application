@@ -26,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // Services
 import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
+import { ChatroomService } from './services/chatroom.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -58,6 +59,7 @@ import { AuthGuard } from './guards/auth.guard';
     AuthService,
     AlertService,
     AuthGuard,
+    ChatroomService,
   ],
   bootstrap: [AppComponent]
 })

@@ -10,7 +10,12 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: "/login"},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'chat', component: ChatComponent},
+  {path: 'chat',
+    children: [
+      {path: '', component: ChatComponent},
+      {path: ':chatroomId', component: ChatComponent},
+    ]
+  },
   {path: '**', redirectTo: "/login"},
 
 ];

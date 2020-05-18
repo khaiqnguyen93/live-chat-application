@@ -6,6 +6,7 @@ import { AlertService } from './alert.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { switchMap } from 'rxjs/operators';
+import { Alert } from '../classes/alert';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,9 @@ export class AuthService {
   }
 
   public logout(): void {
-    this.router.navigate(['/login']);
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+      this.alertService.alerts.next(new Alert('You have been signed out.'));
+    });
   }
 }

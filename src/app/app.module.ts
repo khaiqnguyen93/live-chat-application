@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
-import { AlertModule } from 'ngx-bootstrap/alert';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// Modules
+import { AlertModule } from 'ngx-bootstrap/alert';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -25,6 +26,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // Services
 import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
+
+// Guards
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,7 @@ import { AlertService } from './services/alert.service';
   providers: [
     AuthService,
     AlertService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

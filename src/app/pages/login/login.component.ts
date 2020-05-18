@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy  {
   constructor(
     private formBuilder: FormBuilder
     , private alertService: AlertService
-    , private authSer: AuthService
+    , private authService: AuthService
     , private router: Router
     , private routeActive: ActivatedRoute
     ) {
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy  {
     const{email,password} = this.loginForm.value;
     console.log(`Email:${email}, Password: ${password}`);
     this.subscriptions.push(
-      this.authSer.login(email, password).subscribe(success => {
+      this.authService.login(email, password).subscribe(success => {
         if(success) {
           this.router.navigateByUrl(this.returnUrl);
         }

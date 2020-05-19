@@ -5,10 +5,13 @@
   .message {
     font-size: 1.2em;
   }
+
   .image-wrapper {
-    margin-right: 1em;
-    height: 75px;
-    width: 75px;
+    img {
+      margin-right: 1em;
+      height: 75px;
+      width: 75px;
+    }
   }
   .name {
     text-decoration: underline;

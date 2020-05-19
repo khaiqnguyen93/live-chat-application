@@ -1,9 +1,19 @@
 <div class="h-100 d-flex flex-column chat-window">
-  <app-chatroom-title-bar [title]="'BB'"></app-chatroom-title-bar>
-  <div class="message-wrapper h-100">
-      <ng-container *ngFor="let msg of dummyData">
+    <ng-container *ngIf="!chatroom else chatMsgs">
+      <div class="select-room h-100 w-100 d-flex align-items-center justify-content-center">
+        <div class="select-room-msg">
+            Select a room to chat.
+        </div>
+      </div>
+    </ng-container>
+</div>
+
+<ng-template #chatMsgs>
+  <app-chatroom-title-bar [title]="chatroom.name"></app-chatroom-title-bar>
+  <div class="message-wrapper h-100" #scrollContainer>
+      <ng-container *ngFor="let msg of msgs">
         <app-chat-message [msg]="msg"></app-chat-message>
       </ng-container>
   </div>
   <app-chat-input></app-chat-input>
-</div>
+</ng-template>

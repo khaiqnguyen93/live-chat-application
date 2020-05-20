@@ -30,6 +30,14 @@ export class LoginComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.returnUrl = this.routeActive.snapshot.queryParams['returnUrl'] || '/chat';
+    // Redirect to chat if already logged in
+    this.subscriptions.push(
+      this.authService.currentUser.subscribe(user => {
+        if(!!user) {
+          this.router.navigateByUrl('/chat')
+        }
+      })
+    )
   }
 
   ngOnDestroy() {

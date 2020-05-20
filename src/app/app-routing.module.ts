@@ -5,6 +5,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileEditorComponent } from './pages/profile-editor/profile-editor.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     ]
   },
   {path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile/:userId/edit', component: ProfileEditorComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: "/login"},
 
 ];

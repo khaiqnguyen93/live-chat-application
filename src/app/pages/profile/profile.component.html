@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-8 col-md-6" *ngIf="user else defaultPhoto">
+    <div class="col-xs-12 col-sm-8 col-md-6" *ngIf="user else noPhoto">
       <img [src]="user?.photoUrl" alt="your avatar" class="rounded-circle mx-auto d-block profile-pic">
     </div>
   </div>
@@ -27,8 +27,8 @@
   </div>
 </div>
 
-<ng-template #defaultPhoto>
+<ng-template #noPhoto>
   <div class="no-photo d-flex justify-content-center align-items-center">
-    <img [src]="user?.photoUrl" alt="default avatar">
+    No photo
   </div>
 </ng-template>

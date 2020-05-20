@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Location } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { User } from 'src/app/interfaces/user';
 import { AlertService } from 'src/app/services/alert.service';
@@ -21,7 +21,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
   public userId: string = '';
   private subscriptions: Subscription[] = [];
   public uploadPercent: number = 0;
-  public downloadUrl: string | null = null;
+  public downloadUrl: String;
 
   constructor(
     private authService: AuthService
@@ -51,11 +51,12 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
   public uploadFile(event): void {
     const file = event.target.files[0];
     const filePath = `${file.name}_${this.currentUser.id}`;
-    const task = this.fireStorage.upload(filePath, file);
+    const uploadTask = this.fireStorage.upload(filePath, file);
+    const ref = this.fireStorage.ref(filePath);
 
     // Observe percentage change
     this.subscriptions.push(
-      task.percentageChanges().subscribe(percentage => {
+      uploadTask.percentageChanges().subscribe(percentage => {
         if(percentage < 100) {
           //loading
         } else {
@@ -66,10 +67,13 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
     );
 
     // Get notified when download Url is available
+    let downloadUrlTemp: Observable<String>;
     this.subscriptions.push(
-      task.snapshotChanges().pipe(
+      uploadTask.snapshotChanges().pipe(
         finalize(() => {
-          url => this.downloadUrl = url;
+          downloadUrlTemp = ref.getDownloadURL();
+          downloadUrlTemp.subscribe(url => this.downloadUrl = url);
+          console.log(`upload:${this.downloadUrl}`);
         })
       ).subscribe()
     )
@@ -83,7 +87,8 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
       photo = this.currentUser.photoUrl;
     }
     const user = Object.assign({}, this.currentUser, {photoUrl: photo});
-    const userRef: AngularFirestoreDocument<User> = this.afStore.doc((`users/${user.uid}`))
+    const userRef: AngularFirestoreDocument<User> = this.afStore.doc((`users/${user.id}`))
+    console.log(`save:${user.uid}`);
     userRef.set(user);
     this.alertService.alerts.next(new Alert('Your profile was successfully updated!'));
     this.location.back();

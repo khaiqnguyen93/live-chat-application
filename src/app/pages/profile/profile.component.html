@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6" *ngIf="user else defaultPhoto">
+      <img [src]="user?.photoUrl" alt="your avatar" class="rounded-circle mx-auto d-block profile-pic">
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6 text-center profile-name">
+      {{ user?.firstName }} {{ user?.lastName }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6 text-center profile-status">
+      {{ user?.status }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6 text-center profile-about">
+      {{ user?.about }}
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="user?.id === currentUser?.id">
+    <div class="col-xs-12 col-sm-8 col-md-6 text-center editBtn">
+      <button [routerLink]="'/profile/'+currentUser?.id + '/edit'" class="btn btn-primary">Edit Profile</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #defaultPhoto>
+  <div class="no-photo d-flex justify-content-center align-items-center">
+    <img [src]="user?.photoUrl" alt="default avatar">
+  </div>
+</ng-template>

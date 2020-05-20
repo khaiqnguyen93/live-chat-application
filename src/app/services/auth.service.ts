@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../classes/user';
 import { Observable, of, from } from 'rxjs';
 import { AlertService } from './alert.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { switchMap } from 'rxjs/operators';
 import { Alert } from '../classes/alert';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,9 @@ export class AuthService {
           email: userCredential.user.email,
           firstName,
           lastName,
-          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/live-chat-app-e3108.appspot.com/o/default_avatar.png?alt=media&token=a4086700-9cb6-4d3d-a36e-5a1b8ec2df35'
+          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/live-chat-app-e3108.appspot.com/o/default_avatar.png?alt=media&token=a4086700-9cb6-4d3d-a36e-5a1b8ec2df35',
+          status: '',
+          about: ''
         }
         userRef.set(updatedUser);
         return true;

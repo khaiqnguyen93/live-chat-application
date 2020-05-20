@@ -30,6 +30,7 @@ import { ChatroomService } from './services/chatroom.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AuthGuard } from './guards/auth.guard';
     ChatroomTitleBarComponent,
     ChatMessageComponent,
     ChatroomWindowComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

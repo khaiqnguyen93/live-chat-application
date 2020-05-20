@@ -1,0 +1,30 @@
+@import '../../../styles/variable';
+
+.no-photo {
+  height: 150px;
+  width: 150px;
+  margin: 1em 0;
+  color: white;
+  background: $grey;
+  border-radius: 50%;
+}
+
+.profile-pic {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 1em 0;
+}
+
+.profile-name {
+  font-size: 1.5em;
+  font-weight: 200;
+}
+
+.profile-about {
+  margin-bottom: 2em;
+  font-weight: 200;
+}
+
+.profile-quote {
+  margin-bottom: 2em;
+}

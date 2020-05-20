@@ -10,7 +10,7 @@ import { ChatroomService } from 'src/app/services/chatroom.service';
 })
 export class ChatroomWindowComponent implements OnInit, OnDestroy, AfterViewChecked {
 
-  @ViewChild('scrollContainer') private scrollContainer: ElementRef;
+  @ViewChild('scrollContainer',{static: false}) private scrollContainer: ElementRef;
 
   public subscriptions: Subscription[] = [];
   public chatroom: Observable<any>;

@@ -6,6 +6,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileEditorComponent } from './pages/profile-editor/profile-editor.component';
+import { OwnershipAccountGuard } from './guards/ownership-account.guard';
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
     ]
   },
   {path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'profile/:userId/edit', component: ProfileEditorComponent, canActivate: [AuthGuard]},
+  {path: 'profile/:userId/edit', component: ProfileEditorComponent, canActivate: [AuthGuard, OwnershipAccountGuard]},
   {path: '**', redirectTo: "/login"},
 
 ];

@@ -22,6 +22,8 @@ import { ChatroomTitleBarComponent } from './pages/chat/components/chatroom-titl
 import { ChatMessageComponent } from './pages/chat/components/chat-message/chat-message.component';
 import { ChatroomWindowComponent } from './pages/chat/components/chatroom-window/chatroom-window.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileEditorComponent } from './pages/profile-editor/profile-editor.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -30,8 +32,7 @@ import { ChatroomService } from './services/chatroom.service';
 
 // Guards
 import { AuthGuard } from './guards/auth.guard';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProfileEditorComponent } from './pages/profile-editor/profile-editor.component';
+import { OwnershipAccountGuard } from './guards/ownership-account.guard';
 
 @NgModule({
   declarations: [
@@ -62,8 +63,9 @@ import { ProfileEditorComponent } from './pages/profile-editor/profile-editor.co
   providers: [
     AuthService,
     AlertService,
-    AuthGuard,
     ChatroomService,
+    AuthGuard,
+    OwnershipAccountGuard,
   ],
   bootstrap: [AppComponent]
 })

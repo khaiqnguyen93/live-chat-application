@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { QrDialogComponent } from 'src/app/components/qr-dialog/qr-dialog.component';
 
 @Component({
   selector: 'app-chatroom-title-bar',
@@ -7,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChatroomTitleBarComponent implements OnInit {
 
+  public currentUrl: string = null;
   @Input() title: string;
 
-  constructor() { }
+  constructor(
+    public dialog : MatDialog
+  ) {}
+
+  openQRDialog(): void {
+    this.dialog.open(QrDialogComponent, {});
+  }
 
   ngOnInit() {
   }

@@ -11,6 +11,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { QRCodeModule } from 'angularx-qrcode';
 
 // Components
 import { LoginComponent } from './pages/login/login.component';
@@ -33,6 +34,9 @@ import { ChatroomService } from './services/chatroom.service';
 // Guards
 import { AuthGuard } from './guards/auth.guard';
 import { OwnershipAccountGuard } from './guards/ownership-account.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QrDialogComponent } from './components/qr-dialog/qr-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import { OwnershipAccountGuard } from './guards/ownership-account.guard';
     ChatroomWindowComponent,
     ProfileComponent,
     ProfileEditorComponent,
+    QrDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,12 @@ import { OwnershipAccountGuard } from './guards/ownership-account.guard';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    QRCodeModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    QrDialogComponent,
   ],
   providers: [
     AuthService,

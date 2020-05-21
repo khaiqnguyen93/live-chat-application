@@ -73,7 +73,6 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
         finalize(() => {
           downloadUrlTemp = ref.getDownloadURL();
           downloadUrlTemp.subscribe(url => this.downloadUrl = url);
-          console.log(`upload:${this.downloadUrl}`);
         })
       ).subscribe()
     )
@@ -88,7 +87,6 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
     }
     const user = Object.assign({}, this.currentUser, {photoUrl: photo});
     const userRef: AngularFirestoreDocument<User> = this.afStore.doc((`users/${user.id}`))
-    console.log(`save:${user.uid}`);
     userRef.set(user);
     this.alertService.alerts.next(new Alert('Your profile was successfully updated!'));
     this.location.back();

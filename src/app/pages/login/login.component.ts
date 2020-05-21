@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit, OnDestroy  {
     }
 
     const{email,password} = this.loginForm.value;
-    console.log(`Email:${email}, Password: ${password}`);
     this.subscriptions.push(
       this.authService.login(email, password).subscribe(success => {
         if(success) {

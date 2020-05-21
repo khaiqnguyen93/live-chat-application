@@ -1,11 +1,13 @@
 @import '../../../../../styles/variable';
 
 .chat-message {
-  padding: 1.25em;
+  padding: .75em 1.25em;
   .message {
-    font-size: 1.2em;
+    color:darken($grey, 30%);
+    font-weight: 300;
+    font-size: 1em;
+    margin-top: 0.2em;
   }
-
   .image-wrapper {
     img {
       margin-right: 1em;
@@ -14,12 +16,14 @@
     }
   }
   .name {
-    text-decoration: underline;
+    margin-right: .5em;
     font-weight: 500;
+    font-size: 1.2em;
   }
   .timestamp {
-    margin-bottom: .75em;
-    color: darken($light-grey, 20%)
+    color: darken($light-grey, 30%);
+    font-weight: 300;
+    font-size: .75em;
   }
 
 }

@@ -11,9 +11,19 @@
 <ng-template #chatMsgs>
   <app-chatroom-title-bar [title]="chatroom.name"></app-chatroom-title-bar>
   <div class="message-wrapper h-100" #scrollContainer>
-      <ng-container *ngFor="let msg of msgs">
-        <app-chat-message [msg]="msg"></app-chat-message>
-      </ng-container>
+     <ng-container *ngIf="msgs?.length > 0 else noMsg">
+        <ng-container *ngFor="let msg of msgs">
+          <app-chat-message [msg]="msg"></app-chat-message>
+        </ng-container>
+    </ng-container>
   </div>
   <app-chat-input></app-chat-input>
+</ng-template>
+
+<ng-template #noMsg>
+  <div class="select-room h-100 w-100 d-flex align-items-center justify-content-center">
+    <div class="select-room-msg">
+       No messages.
+    </div>
+  </div>
 </ng-template>

@@ -3,10 +3,9 @@
     <img [src]="msg.sender.photoUrl" class="rounded-circle">
   </div>
   <div class="buble d-flex flex-column">
-    <div class="col-xs-8 name">
-        {{msg.sender.firstName}} {{msg.sender.lastName}}
+    <div class="d-flex align-items-baseline">
+        <span class="name">{{msg.sender.firstName}} {{msg.sender.lastName}}</span><span class="timestamp">{{msg.createdAt.toDate() | date:'medium'}}</span>
     </div>
-    <small class="timestamp">{{msg.createdAt.toDate() | date:'medium'}}</small>
     <div class="message">
       {{msg.message}}
     </div>

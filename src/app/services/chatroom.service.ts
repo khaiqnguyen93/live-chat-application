@@ -45,7 +45,7 @@ export class ChatroomService {
     const chatroomId = this.changeChatroom.value;
     const message = {
       message: msg,
-      createdAt: new Date,
+      createdAt: new Date(),
       sender: this.authService.currentUserSnapshot
     };
 

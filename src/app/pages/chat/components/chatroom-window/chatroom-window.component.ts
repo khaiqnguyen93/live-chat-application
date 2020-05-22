@@ -13,8 +13,8 @@ export class ChatroomWindowComponent implements OnInit, OnDestroy, AfterViewChec
   @ViewChild('scrollContainer',{static: false}) private scrollContainer: ElementRef;
 
   public subscriptions: Subscription[] = [];
-  public chatroom: Observable<any>;
-  public msgs: Observable<any>;
+  public chatroom: any;
+  public msgs: any;
 
   constructor(
     private route: ActivatedRoute

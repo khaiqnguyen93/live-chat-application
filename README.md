@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.26.
 
+## Features
+- Sign up, login and edit profile.
+- Cross-devices real time chat application.
+- QR code for user to access quickly to the chat room.
+- User can attach file to message (currently support only for img)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

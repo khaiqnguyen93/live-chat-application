@@ -74,6 +74,6 @@ export class ChatInputComponent implements OnInit {
     this.chatroomService.createMessage(message, file);
 
     this.newMsgText = '';
-    this.labelImport.nativeElement.innerText = '';
+    this.labelImport.nativeElement.innerText = 'Choose file';
   }
 }

@@ -9,5 +9,10 @@
     <div class="message">
       {{msg.message}}
     </div>
+    <div class="file-upload" *ngIf="msg?.file && (msg.file | json) != '{}'">
+      <!-- <a (click)="download()" [download]="msg.file?.name"> -->
+        <img [src]="msg?.file.url" alt="image">
+      <!-- </a> -->
+    </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class ChatroomService {
   public chatrooms: Observable<any>;
-  public changeChatroom: BehaviorSubject<String | null> = new BehaviorSubject(null);
+  public changeChatroom: BehaviorSubject<string | null> = new BehaviorSubject(null);
   public selectedChatroom: Observable<any>;
   public selectedChatroomMsg: Observable<any>;
 
@@ -30,7 +30,7 @@ export class ChatroomService {
       switchMap((chatroomId) => {
         if(chatroomId) {
           return db.collection(`chatrooms/${chatroomId}/messages`, ref => {
-            return ref.orderBy('createdAt', 'asc').limit(50);
+            return ref.orderBy('createdAt', 'asc').limit(100);
           }).valueChanges()
           ;
         }
@@ -41,12 +41,13 @@ export class ChatroomService {
     this.chatrooms = db.collection('chatrooms').valueChanges();
   }
 
-  public createMessage(msg: string): void {
+  public createMessage(msg: string, file: any): void {
     const chatroomId = this.changeChatroom.value;
     const message = {
       message: msg,
       createdAt: new Date(),
-      sender: this.authService.currentUserSnapshot
+      sender: this.authService.currentUserSnapshot,
+      file: file
     };
 
     this.db.collection(`chatrooms/${chatroomId}/messages`).add(message);

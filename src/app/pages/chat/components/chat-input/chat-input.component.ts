@@ -43,9 +43,9 @@ export class ChatInputComponent implements OnInit {
     this.subscriptions.push(
       uploadTask.percentageChanges().subscribe(percentage => {
         if(percentage < 100) {
-          //loading
+          document.getElementById("overlay").style.display = "block";
         } else {
-          //loading off
+          document.getElementById("overlay").style.display = "none";
         }
         this.uploadPercent = percentage;
       })

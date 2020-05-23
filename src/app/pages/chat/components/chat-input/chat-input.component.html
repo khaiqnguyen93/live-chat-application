@@ -7,5 +7,10 @@
         <label #labelImport class="custom-file-label" for="inputFile">Choose file</label>
       </div>
       <button class="btn btn-primary" type="button" (click)="submit(newMessage.value)">Enter</button>
+      <div #overlay id="overlay" class="overlay">
+        <div class="spinner-border loading-overlay" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
   </div>
 </div>

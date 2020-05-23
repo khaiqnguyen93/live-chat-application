@@ -16,7 +16,7 @@ export class ChatInputComponent implements OnInit {
   public newMsgText: string = '';
   private subscriptions: Subscription[] = [];
   public uploadPercent: number = 0;
-  public downloadUrl: string;
+  public downloadUrl: string = '';
   @ViewChild('labelImport', {static: false})
   labelImport: ElementRef;
 
@@ -72,8 +72,12 @@ export class ChatInputComponent implements OnInit {
       }
     }
     this.chatroomService.createMessage(message, file);
+    this.resetValue();
+  }
 
+  private resetValue(): void {
     this.newMsgText = '';
+    this.downloadUrl = '';
     this.labelImport.nativeElement.innerText = 'Choose file';
   }
 }

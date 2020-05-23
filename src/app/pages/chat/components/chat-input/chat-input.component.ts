@@ -64,12 +64,16 @@ export class ChatInputComponent implements OnInit {
   }
 
   public submit(message: string): void {
-    const file = {
-      name: this.labelImport.nativeElement.innerText,
-      url: this.downloadUrl,
+    let file = {};
+    if(this.downloadUrl) {
+      file = {
+        name: this.labelImport.nativeElement.innerText,
+        url: this.downloadUrl,
+      }
     }
     this.chatroomService.createMessage(message, file);
 
     this.newMsgText = '';
+    this.labelImport.nativeElement.innerText = '';
   }
 }

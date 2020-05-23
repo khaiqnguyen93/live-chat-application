@@ -6,7 +6,7 @@
     color:darken($grey, 30%);
     font-weight: 300;
     font-size: 1em;
-    margin-top: 0.2em;
+    margin-top: 0.25em;
   }
   .image-wrapper {
     img {
@@ -17,13 +17,13 @@
   }
   .name {
     margin-right: .5em;
-    font-weight: 500;
-    font-size: 1.2em;
+    font-weight: 400;
+    font-size: 1em;
   }
   .timestamp {
     color: darken($light-grey, 30%);
     font-weight: 300;
-    font-size: .75em;
+    font-size: .65em;
   }
   .file-upload{
     img{

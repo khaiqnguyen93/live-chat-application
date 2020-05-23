@@ -17,13 +17,9 @@ export class ChatMessageComponent implements OnInit {
   ngOnInit() {
   }
 
-  public download(event: any): void {
+  public download(): void {
     const storageRef = this.fireStorage.ref(`23_05_2020_0101_00_22_vi-sao-ga-trong-lai-gay.jpg`);
-    console.log(storageRef)
-    console.log('storageRef');
     storageRef.getDownloadURL().subscribe((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
-
       // This can be downloaded directly:
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';

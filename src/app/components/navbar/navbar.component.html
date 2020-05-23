@@ -1,19 +1,19 @@
 <nav class="navbar navbar-expand-sm navbar-primary bg-primary">
   <div class="container">
-      <span class="navbar-brand">ChatApp</span>
-        <div class="page-links">
-          <ul class="navbar-nav" *ngIf="currentUser else loggedOut">
-            <li class="nav-item">
-              <a [routerLink]="'/profile/' + currentUser.id"  routerLinkActive="active" class="nav-link">Edit Profile</a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/chat" routerLinkActive="active" class="nav-link">Chat rooms</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="auth.logout()">Logout</a>
-            </li>
-          </ul>
-        </div>
+      <span class="navbar-brand">Live Chat</span>
+      <div class="page-links">
+        <ul class="navbar-nav" *ngIf="currentUser else loggedOut">
+          <li class="nav-item">
+            <a [routerLink]="'/profile/' + currentUser.id"  routerLinkActive="active" class="nav-link">Edit Profile</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/chat" routerLinkActive="active" class="nav-link">Chat rooms</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="auth.logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
   </div>
 </nav>
 

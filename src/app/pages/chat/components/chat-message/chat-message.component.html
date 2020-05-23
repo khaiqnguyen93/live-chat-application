@@ -9,5 +9,8 @@
     <div class="message">
       {{msg.message}}
     </div>
+    <div class="file-upload" *ngIf="msg.file">
+        <img [src]="msg.file.url" [alt]="msg.file.name">
+    </div>
   </div>
 </div>

@@ -2,11 +2,13 @@
 
 .new-message-wrapper {
   .input-group {
-    align-self: flex-end;
+    .custom-file{
+      overflow: hidden;
+    }
     .form-control {
       border-radius: 0;
       border: 0;
-      background-color: $light-grey;
+      background-color: lighten($light-grey, 10%);
       &:focus {
         outline: 0;
         box-shadow: none;

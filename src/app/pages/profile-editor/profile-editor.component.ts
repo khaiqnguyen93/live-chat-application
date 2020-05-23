@@ -21,7 +21,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
   public userId: string = '';
   private subscriptions: Subscription[] = [];
   public uploadPercent: number = 0;
-  public downloadUrl: String;
+  public downloadUrl: string;
 
   constructor(
     private authService: AuthService
@@ -50,7 +50,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
 
   public uploadFile(event): void {
     const file = event.target.files[0];
-    const filePath = `${file.name}_${this.currentUser.id}`;
+    const filePath = `profile_${this.currentUser.id}_${file.name}`;
     const uploadTask = this.fireStorage.upload(filePath, file);
     const ref = this.fireStorage.ref(filePath);
 
@@ -67,7 +67,7 @@ export class ProfileEditorComponent implements OnInit, OnDestroy {
     );
 
     // Get notified when download Url is available
-    let downloadUrlTemp: Observable<String>;
+    let downloadUrlTemp: Observable<string>;
     this.subscriptions.push(
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
